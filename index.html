@@ -114,8 +114,9 @@
         @media (max-width: 768px) {
             .iphone-screen {
                 max-width: 320px; /* Adjust for smaller devices */
-                height: auto;
+                height: 90%; /* Maintain height for smaller screens */
                 padding: 15px;
+                overflow: hidden; /* Prevent body overflow */
             }
 
             .logo {
@@ -139,8 +140,9 @@
         @media (max-width: 480px) {
             .iphone-screen {
                 max-width: 280px; /* Adjust for very small devices */
-                height: auto;
+                height: 90%; /* Maintain height for very small screens */
                 padding: 10px;
+                overflow: hidden; /* Prevent body overflow */
             }
 
             .logo {
