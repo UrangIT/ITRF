@@ -103,6 +103,14 @@
             background-color: #0056b3;
         }
 
+        .note {
+            font-size: 12px;
+            color: #555;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: none; /* Initially hidden */
+        }
+
         @media (max-width: 768px) {
             .iphone-screen {
                 max-width: 320px; /* Adjust for smaller devices */
@@ -154,6 +162,16 @@
         }
     </style>
     <script>
+        function showNote() {
+            const note = document.getElementById("teamviewer-note");
+            note.style.display = "block"; // Show the note
+        }
+
+        function hideNote() {
+            const note = document.getElementById("teamviewer-note");
+            note.style.display = "none"; // Hide the note
+        }
+
         function submitTicket(event) {
             event.preventDefault();
 
@@ -218,10 +236,12 @@
                 <input type="tel" id="contact" name="contact" required>
 
                 <label for="teamviewer_id">TeamViewer ID (Optional):</label>
-                <input type="text" id="teamviewer_id" name="teamviewer_id">
-
+                <input type="text" id="teamviewer_id" name="teamviewer_id" onfocus="showNote()" onblur="hideNote()">
                 <label for="teamviewer_password">TeamViewer Password (Optional):</label>
-                <input type="password" id="teamviewer_password" name="teamviewer_password">
+                <input type="password" id="teamviewer_password" name="teamviewer_password" onfocus="showNote()" onblur="hideNote()">
+                <div id="teamviewer-note" class="note">
+                    Note: Provide TeamViewer details if I need to log onto your system. If not needed, you can leave these fields blank.
+                </div>
 
                 <label for="category">Fault Category:</label>
                 <select id="category" name="category" required>
