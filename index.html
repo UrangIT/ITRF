@@ -18,24 +18,23 @@
 
         .iphone-screen {
             background-color: #fff;
-            width: 150%; /* Set default width to 1000% of the viewport */
-            height: 150%; /* Set default height to 100% of the viewport */
+            width: 100%; /* Set default width to 100% of the viewport */
             max-width: 375px; /* iPhone width */
-            max-height: 667px; /* iPhone height */
             border-radius: 30px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             padding: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center; /* Center content horizontally */
             position: relative;
             overflow: hidden;
         }
 
         .logo {
             display: block;
-            margin: 0 auto 20px; /* Center the logo and add spacing below */
-            width: 150px; /* Set logo size */
-            height: auto;
+            margin: 0 auto 20px; /* center the logo and add margin below */
+            width: 150px; /* Set logo size *
+            height: auto; /* Maintain aspect ratio *
         }
 
         h1 {
@@ -50,8 +49,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            flex-grow: 1;
-            overflow-y: auto;
+            width: 100%; /* Ensure the form takes full width */
         }
 
         label {
@@ -78,8 +76,8 @@
 
         textarea {
             resize: vertical; /* Allow vertical resizing */
-            min-height: 150px; /* Set a larger minimum height */
-            max-height: 300px; /* Limit the maximum height */
+            min-height: 180px; /* Set a larger minimum height */
+            max-height: 400px; /* Limit the maximum height */
         }
 
         button {
@@ -98,12 +96,11 @@
         @media (max-width: 768px) {
             .iphone-screen {
                 max-width: 320px; /* Adjust for smaller devices */
-                height: auto;
                 padding: 15px;
             }
 
             .logo {
-                width: 40px; /* Smaller logo for smaller screens */
+                width: 150px; /* Smaller logo for smaller screens */
             }
 
             h1 {
@@ -123,12 +120,11 @@
         @media (max-width: 480px) {
             .iphone-screen {
                 max-width: 280px; /* Adjust for very small devices */
-                height: auto;
                 padding: 10px;
             }
 
             .logo {
-                width: 100px; /* Further reduce logo size for very small screens */
+                width: 120px; /* Further reduce logo size for very small screens */
             }
 
             h1 {
@@ -163,9 +159,10 @@
             // Collect form data
             const fullName = document.getElementById("full_name").value;
             const email = document.getElementById("email").value;
+            const country = document.getElementById("country").value;
             const contact = document.getElementById("contact").value;
-            const teamviewerId = document.getElementById("teamviewer_id").value;
-            const teamviewerPassword = document.getElementById("teamviewer_password").value;
+            const teamviewerId = document.getElementById("teamviewer_id").value || "N/A";
+            const teamviewerPassword = document.getElementById("teamviewer_password").value || "N/A";
             const category = document.getElementById("category").value;
             const problemDescription = document.getElementById("problem_description").value;
 
@@ -174,6 +171,7 @@
                 Ticket Number: ${ticketNumber}%0D%0A
                 Full Name: ${fullName}%0D%0A
                 Email: ${email}%0D%0A
+                Country: ${country}%0D%0A
                 Contact Number: ${contact}%0D%0A
                 TeamViewer ID: ${teamviewerId}%0D%0A
                 TeamViewer Password: ${teamviewerPassword}%0D%0A
@@ -197,14 +195,20 @@
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required>
 
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="SA">SA</option>
+                <option value="UK">UK</option>
+            </select>
+
             <label for="contact">Contact Number:</label>
             <input type="tel" id="contact" name="contact" required>
 
-            <label for="teamviewer_id">TeamViewer ID:</label>
-            <input type="text" id="teamviewer_id" name="teamviewer_id" required>
+            <label for="teamviewer_id">TeamViewer ID (Optional):</label>
+            <input type="text" id="teamviewer_id" name="teamviewer_id">
 
-            <label for="teamviewer_password">TeamViewer Password:</label>
-            <input type="password" id="teamviewer_password" name="teamviewer_password" required>
+            <label for="teamviewer_password">TeamViewer Password (Optional):</label>
+            <input type="password" id="teamviewer_password" name="teamviewer_password">
 
             <label for="category">Fault Category:</label>
             <select id="category" name="category" required>
