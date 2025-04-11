@@ -14,13 +14,16 @@
             height: 100vh;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Prevent body scrolling */
         }
 
         .iphone-screen {
             background-color: #fff;
-            width: 100%; /* Set default width to 100% of the viewport */
+            width: 90%; /* Set default width to 90% of the viewport */
             max-width: 375px; /* iPhone width */
-            border-radius: 30px;
+            height: 90%; /* Set height to resemble an iPhone screen */
+            max-height: 812px; /* iPhone X height */
+            border-radius: 50px; /* More rounded edges */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             padding: 20px;
             display: flex;
@@ -30,11 +33,18 @@
             overflow: hidden;
         }
 
+        .form-container {
+            flex-grow: 1;
+            overflow-y: auto; /* Enable scrolling for the form */
+            width: 100%;
+            padding-right: 10px; /* Add padding for scrollbar visibility */
+        }
+
         .logo {
             display: block;
-            margin: 0 auto 20px; /* center the logo and add margin below */
-            width: 150px; /* Set logo size *
-            height: auto; /* Maintain aspect ratio *
+            margin: 0 auto 20px; /* Center the logo and add spacing below */
+            width: 150px; /* Set logo size */
+            height: auto;
         }
 
         h1 {
@@ -76,8 +86,8 @@
 
         textarea {
             resize: vertical; /* Allow vertical resizing */
-            min-height: 180px; /* Set a larger minimum height */
-            max-height: 400px; /* Limit the maximum height */
+            min-height: 150px; /* Set a larger minimum height */
+            max-height: 300px; /* Limit the maximum height */
         }
 
         button {
@@ -96,11 +106,12 @@
         @media (max-width: 768px) {
             .iphone-screen {
                 max-width: 320px; /* Adjust for smaller devices */
+                height: auto;
                 padding: 15px;
             }
 
             .logo {
-                width: 150px; /* Smaller logo for smaller screens */
+                width: 120px; /* Smaller logo for smaller screens */
             }
 
             h1 {
@@ -120,11 +131,12 @@
         @media (max-width: 480px) {
             .iphone-screen {
                 max-width: 280px; /* Adjust for very small devices */
+                height: auto;
                 padding: 10px;
             }
 
             .logo {
-                width: 120px; /* Further reduce logo size for very small screens */
+                width: 100px; /* Further reduce logo size for very small screens */
             }
 
             h1 {
@@ -188,47 +200,49 @@
     <div class="iphone-screen">
         <img src="Urang1.jpg" alt="Urang Logo" class="logo">
         <h1>IT Helpdesk Requests</h1>
-        <form onsubmit="submitTicket(event)">
-            <label for="full_name">Full Name:</label>
-            <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+        <div class="form-container">
+            <form onsubmit="submitTicket(event)">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
 
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required>
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
 
-            <label for="country">Country:</label>
-            <select id="country" name="country" required>
-                <option value="SA">SA</option>
-                <option value="UK">UK</option>
-            </select>
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="SA">SA</option>
+                    <option value="UK">UK</option>
+                </select>
 
-            <label for="contact">Contact Number:</label>
-            <input type="tel" id="contact" name="contact" required>
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" name="contact" required>
 
-            <label for="teamviewer_id">TeamViewer ID (Optional):</label>
-            <input type="text" id="teamviewer_id" name="teamviewer_id">
+                <label for="teamviewer_id">TeamViewer ID (Optional):</label>
+                <input type="text" id="teamviewer_id" name="teamviewer_id">
 
-            <label for="teamviewer_password">TeamViewer Password (Optional):</label>
-            <input type="password" id="teamviewer_password" name="teamviewer_password">
+                <label for="teamviewer_password">TeamViewer Password (Optional):</label>
+                <input type="password" id="teamviewer_password" name="teamviewer_password">
 
-            <label for="category">Fault Category:</label>
-            <select id="category" name="category" required>
-                <option value="OneDrive">OneDrive</option>
-                <option value="8x8">8x8</option>
-                <option value="Out of Office">Out of Office</option>
-                <option value="Email Access">Email Access</option>
-                <option value="Laptop/PC problems">Laptop/PC problems</option>
-                <option value="New email address">New email address</option>
-                <option value="App request">App request</option>
-                <option value="Email forward request">Email forward request</option>
-                <option value="8x8 Call forwarding">8x8 Call forwarding</option>
-                <option value="Other">Other</option>
-            </select>
+                <label for="category">Fault Category:</label>
+                <select id="category" name="category" required>
+                    <option value="OneDrive">OneDrive</option>
+                    <option value="8x8">8x8</option>
+                    <option value="Out of Office">Out of Office</option>
+                    <option value="Email Access">Email Access</option>
+                    <option value="Laptop/PC problems">Laptop/PC problems</option>
+                    <option value="New email address">New email address</option>
+                    <option value="App request">App request</option>
+                    <option value="Email forward request">Email forward request</option>
+                    <option value="8x8 Call forwarding">8x8 Call forwarding</option>
+                    <option value="Other">Other</option>
+                </select>
 
-            <label for="problem_description">Problem Description:</label>
-            <textarea id="problem_description" name="problem_description" placeholder="Please explain the problem in detail..." required></textarea>
+                <label for="problem_description">Problem Description:</label>
+                <textarea id="problem_description" name="problem_description" placeholder="Please explain the problem in detail..." required></textarea>
 
-            <button type="submit">Submit</button>
-        </form>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
