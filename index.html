@@ -18,8 +18,8 @@
 
         .iphone-screen {
             background-color: #fff;
-            width: 100%; /* Set default width to 90% of the viewport */
-            height: 100%; /* Set default height to 90% of the viewport */
+            width: 150%; /* Set default width to 90% of the viewport */
+            height: 150%; /* Set default height to 90% of the viewport */
             max-width: 375px; /* iPhone width */
             max-height: 667px; /* iPhone height */
             border-radius: 30px;
@@ -149,8 +149,16 @@
         function submitTicket(event) {
             event.preventDefault();
 
-            // Generate a random ticket number
-            const ticketNumber = "TICKET-" + Math.floor(Math.random() * 1000000);
+            // Retrieve the current ticket number from localStorage or initialize it to 1
+            let ticketNumber = localStorage.getItem("ticketNumber");
+            if (!ticketNumber) {
+                ticketNumber = 1; // Start at 1 if no ticket number exists
+            } else {
+                ticketNumber = parseInt(ticketNumber) + 1; // Increment the ticket number
+            }
+
+            // Save the updated ticket number back to localStorage
+            localStorage.setItem("ticketNumber", ticketNumber);
 
             // Collect form data
             const fullName = document.getElementById("full_name").value;
