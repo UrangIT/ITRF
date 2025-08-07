@@ -1,270 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Helpdesk Requests</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #e5e5e5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Prevent body scrolling */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Helpdesk Request</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: #f5f5f7;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-        .iphone-screen {
-            background-color: #fff;
-            width: 90%; /* Set default width to 90% of the viewport */
-            max-width: 375px; /* iPhone width */
-            height: 90%; /* Set height to resemble an iPhone screen */
-            max-height: 812px; /* iPhone X height */
-            border-radius: 50px; /* More rounded edges */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            position: relative;
-            overflow: hidden;
-        }
+    .container {
+      background-color: white;
+      width: 95%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 40px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .form-container {
-            flex-grow: 1;
-            overflow-y: auto; /* Enable scrolling for the form */
-            width: 100%;
-            padding-right: 10px; /* Add padding for scrollbar visibility */
-        }
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
 
-        .logo {
-            display: block;
-            margin: 0 auto 20px; /* Center the logo and add spacing below */
-            width: 150px; /* Set logo size */
-            height: auto;
-        }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1c1c1e;
+    }
 
-        h1 {
-            text-align: center;
-            margin: 0;
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    form {
+      width: 100%;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%; /* Ensure the form takes full width */
-        }
+    label {
+      font-weight: 600;
+      margin-top: 10px;
+      display: block;
+      color: #3a3a3c;
+    }
 
-        label {
-            font-weight: bold;
-            font-size: 14px;
-            color: #555;
-        }
+    input,
+    select,
+    textarea,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
 
-        input, select, textarea, button {
-            padding: 12px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            width: 100%;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-        }
+    button {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
+    button:hover {
+      background-color: #005ecb;
+    }
 
-        textarea {
-            resize: vertical; /* Allow vertical resizing */
-            min-height: 150px; /* Set a larger minimum height */
-            max-height: 300px; /* Limit the maximum height */
-        }
-
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .note {
-            font-size: 12px;
-            color: #555;
-            margin-top: -10px;
-            margin-bottom: 10px;
-            display: none; /* Initially hidden */
-        }
-
-        @media (max-width: 768px) {
-            .iphone-screen {
-                max-width: 320px; /* Adjust for smaller devices */
-                height: 90%; /* Maintain height for smaller screens */
-                padding: 15px;
-                overflow: hidden; /* Prevent body overflow */
-            }
-
-            .logo {
-                width: 120px; /* Smaller logo for smaller screens */
-            }
-
-            h1 {
-                font-size: 18px;
-            }
-
-            input, select, textarea, button {
-                font-size: 12px;
-                padding: 10px;
-            }
-
-            textarea {
-                min-height: 100px; /* Adjust for smaller screens */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .iphone-screen {
-                max-width: 280px; /* Adjust for very small devices */
-                height: 90%; /* Maintain height for very small screens */
-                padding: 10px;
-                overflow: hidden; /* Prevent body overflow */
-            }
-
-            .logo {
-                width: 100px; /* Further reduce logo size for very small screens */
-            }
-
-            h1 {
-                font-size: 16px;
-            }
-
-            input, select, textarea, button {
-                font-size: 10px;
-                padding: 8px;
-            }
-
-            textarea {
-                min-height: 70px; /* Adjust for very small screens */
-            }
-        }
-    </style>
-    <script>
-        function showNote() {
-            const note = document.getElementById("teamviewer-note");
-            note.style.display = "block"; // Show the note
-        }
-
-        function hideNote() {
-            const note = document.getElementById("teamviewer-note");
-            note.style.display = "none"; // Hide the note
-        }
-
-        function submitTicket(event) {
-            event.preventDefault();
-
-            // Retrieve the current ticket number from localStorage or initialize it to 1
-            let ticketNumber = localStorage.getItem("ticketNumber");
-            if (!ticketNumber) {
-                ticketNumber = 1; // Start at 1 if no ticket number exists
-            } else {
-                ticketNumber = parseInt(ticketNumber) + 1; // Increment the ticket number
-            }
-
-            // Save the updated ticket number back to localStorage
-            localStorage.setItem("ticketNumber", ticketNumber);
-
-            // Collect form data
-            const fullName = document.getElementById("full_name").value;
-            const email = document.getElementById("email").value;
-            const country = document.getElementById("country").value;
-            const contact = document.getElementById("contact").value;
-            const teamviewerId = document.getElementById("teamviewer_id").value || "N/A";
-            const teamviewerPassword = document.getElementById("teamviewer_password").value || "N/A";
-            const category = document.getElementById("category").value;
-            const problemDescription = document.getElementById("problem_description").value;
-
-            // Create the email body
-            const emailBody = `
-                Ticket Number: ${ticketNumber}%0D%0A
-                Full Name: ${fullName}%0D%0A
-                Email: ${email}%0D%0A
-                Country: ${country}%0D%0A
-                Contact Number: ${contact}%0D%0A
-                TeamViewer ID: ${teamviewerId}%0D%0A
-                TeamViewer Password: ${teamviewerPassword}%0D%0A
-                Fault Category: ${category}%0D%0A
-                Problem Description: ${problemDescription}
-            `;
-
-            // Open the user's default email app with the mailto link
-            window.location.href = `mailto:helpdesk@urang.co.uk?subject=IT Helpdesk Ticket - ${ticketNumber}&body=${emailBody}`;
-        }
-    </script>
+    .success {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <div class="iphone-screen">
-        <img src="Urang1.jpg" alt="Urang Logo" class="logo">
-        <h1>IT Helpdesk Requests</h1>
-        <div class="form-container">
-            <form onsubmit="submitTicket(event)">
-                <label for="full_name">Full Name:</label>
-                <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+  <div class="container">
+    <img src="urang Logo.png" alt="Urang Logo" class="logo" />
+    <h2>IT Helpdesk Request</h2>
+    <form action="mailto:support@urang.co.uk" method="post" enctype="text/plain">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="Name" required />
 
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="Email" required />
 
-                <label for="country">Country:</label>
-                <select id="country" name="country" required>
-                    <option value="SA">SA</option>
-                    <option value="UK">UK</option>
-                </select>
+      <label for="category">Fault Category:</label>
+      <select id="category" name="Fault Category" required>
+        <option value="">Select a category</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Software">Software</option>
+        <option value="Network">Network</option>
+        <option value="Access Request">Access Request</option>
+        <option value="Other">Other</option>
+      </select>
 
-                <label for="contact">Contact Number:</label>
-                <input type="tel" id="contact" name="contact" required>
+      <label for="description">Issue Description:</label>
+      <textarea id="description" name="Issue Description" rows="4" required></textarea>
 
-                <label for="teamviewer_id">TeamViewer ID (Optional):</label>
-                <input type="text" id="teamviewer_id" name="teamviewer_id" onfocus="showNote()" onblur="hideNote()">
-                <label for="teamviewer_password">TeamViewer Password (Optional):</label>
-                <input type="password" id="teamviewer_password" name="teamviewer_password" onfocus="showNote()" onblur="hideNote()">
-                <div id="teamviewer-note" class="note">
-                    Note: Provide TeamViewer details if I need to log onto your system. If not needed, you can leave these fields blank.
-                </div>
+      <label for="teamviewer-id">TeamViewer ID:</label>
+      <input type="text" id="teamviewer-id" name="TeamViewer ID" required />
 
-                <label for="category">Fault Category:</label>
-                <select id="category" name="category" required>
-                    <option value="OneDrive">OneDrive</option>
-                    <option value="8x8">8x8</option>
-                    <option value="Out of Office">Out of Office</option>
-                    <option value="Email Access">Email Access</option>
-                    <option value="Laptop/PC problems">Laptop/PC problems</option>
-                    <option value="New email address">New email address</option>
-                    <option value="App request">App request</option>
-                    <option value="Email forward request">Email forward request</option>
-                    <option value="8x8 Call forwarding">8x8 Call forwarding</option>
-                    <option value="Other">Other</option>
-                </select>
+      <label for="teamviewer">TeamViewer Password:</label>
+      <input type="text" id="teamviewer" name="TeamViewer Password" required />
 
-                <label for="problem_description">Problem Description:</label>
-                <textarea id="problem_description" name="problem_description" placeholder="Please explain the problem in detail..." required></textarea>
-
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
 </body>
 </html>
