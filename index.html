@@ -193,8 +193,8 @@
             const email = document.getElementById("email").value;
             const country = document.getElementById("country").value;
             const contact = document.getElementById("contact").value;
-            const teamviewerId = document.getElementById("teamviewer_id").value || "N/A";
-            const teamviewerPassword = document.getElementById("teamviewer_password").value || "N/A";
+            const teamviewerId = document.getElementById("teamviewer_id").value;
+            const teamviewerPassword = document.getElementById("teamviewer_password").value;
             const category = document.getElementById("category").value;
             const problemDescription = document.getElementById("problem_description").value;
 
@@ -236,10 +236,10 @@
                 <label for="contact">Contact Number:</label>
                 <input type="tel" id="contact" name="contact" required>
 
-                <label for="teamviewer_id">TeamViewer ID (Optional):</label>
-                <input type="text" id="teamviewer_id" name="teamviewer_id" onfocus="showNote()" onblur="hideNote()">
-                <label for="teamviewer_password">TeamViewer Password (Optional):</label>
-                <input type="text" id="teamviewer_password" name="teamviewer_password" onfocus="showNote()" onblur="hideNote()">
+                <label for="teamviewer_id">TeamViewer ID:</label>
+                <input type="text" id="teamviewer_id" name="teamviewer_id" required>
+                <label for="teamviewer_password">TeamViewer Password:</label>
+                <input type="text" id="teamviewer_password" name="teamviewer_password" required>
                 <div id="teamviewer-note" class="note">
                     Note: Provide TeamViewer details if I need to log onto your system. If not needed, you can leave these fields blank.
                 </div>
